@@ -1,0 +1,339 @@
+:root {
+    --bg-color: #f7f4ef;
+    --card-bg: #ffffff;
+    --text-main: #6d594b;
+    --text-muted: #9e8a78;
+    --accent-color: #c7b198;
+    --border-color: #e6dfd5;
+    --heart-color: #d4a373;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px; /* Reducido un poco para dar más espacio en celular */
+    overflow-x: hidden;
+}
+
+#intro-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.8s ease, visibility 0.8s;
+    padding: 20px;
+}
+
+.envelope-btn {
+    background-color: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    padding: 30px; /* Más cómodo para celulares */
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(109, 89, 75, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.envelope-btn:hover { 
+    transform: scale(1.03); 
+}
+
+.envelope-btn .heart { 
+    font-size: 45px; 
+    color: var(--heart-color); 
+    animation: pulse 1.5s infinite; 
+}
+
+.envelope-btn p { 
+    font-family: 'Comfortaa', cursive; 
+    margin-top: 15px; 
+    font-weight: bold; 
+    color: var(--text-main); 
+    font-size: 14px;
+}
+
+.container {
+    background-color: var(--card-bg);
+    max-width: 550px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(109, 89, 75, 0.05);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 0.3s;
+}
+
+.container.show { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.header-letter {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header-letter h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.sub-header {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.music-player {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.play-btn {
+    width: 35px; 
+    height: 35px;
+    min-width: 35px; /* Evita que se encoja en pantallas muy pequeñas */
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: white; 
+    cursor: pointer; 
+    border: none; 
+    font-size: 14px;
+}
+
+.track-info { 
+    flex: 1; 
+    font-size: 12px; 
+    min-width: 0; /* Evita desbordamiento de texto */
+}
+
+.track-info .title { 
+    font-weight: bold; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta el texto largo con puntos suspensivos si no cabe */
+}
+
+.bar {
+    background-color: var(--border-color);
+    height: 6px;
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.track-info .progress { 
+    height: 100%; 
+    width: 0%; 
+    background: var(--text-main); 
+    transition: width 0.1s linear; /* Movimiento fluido por JavaScript */
+}
+
+.letter-content {
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 30px;
+    white-space: pre-line;
+}
+
+.letter-content::first-letter {
+    font-size: 35px;
+    font-family: 'Comfortaa', cursive;
+    float: left;
+    margin-right: 8px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* SECCIONES DE IMÁGENES */
+.section {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Hace que todas las fotos sean completamente responsivas */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.text {
+    background-color: #ba9691;
+    color: white;
+    border-radius: 10px;
+    width: 100%; /* Ocupa el 100% de su contenedor en vez de 500px fijos */
+    padding: 15px;
+    text-align: center;
+    margin: 15px auto;
+    font-weight: 600;
+}
+
+.section-title {
+    font-family: 'Comfortaa', cursive;
+    font-size: 16px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 11px; 
+    text-align: center; 
+    color: var(--text-muted); 
+    margin-bottom: 15px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.memory-thumb {
+    position: relative;
+    aspect-ratio: 1;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.memory-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen en un cuadrado perfecto automáticamente */
+}
+
+.memory-thumb:hover { 
+    transform: scale(1.05); 
+}
+
+#memory-text-box {
+    background-color: var(--bg-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+    line-height: 1.5;
+}
+
+.jar-section {
+    background: linear-gradient(135deg, #faf8f5, #eae3d8);
+    border: 1px dashed var(--accent-color);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.jar-section h3 {
+    font-family: 'Comfortaa'; 
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.jar-section p {
+    font-size: 12px; 
+    color: var(--text-muted);
+}
+
+.jar-btn {
+    background-color: var(--text-main);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+}
+
+.jar-btn:hover { 
+    background-color: var(--accent-color); 
+}
+
+#reason-display {
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 15px;
+    min-height: 20px;
+    color: var(--text-main);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes finos para pantallas muy pequeñas de celular */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    .header-letter h1 {
+        font-size: 20px;
+    }
+    .letter-content {
+        font-size: 13px;
+    }
+}
